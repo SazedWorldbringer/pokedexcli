@@ -22,7 +22,7 @@ func (c *Client) ListLocations(pageURL *string) (ResShallowLocations, error) {
 	if err != nil {
 		return ResShallowLocations{}, err
 	}
-	defer req.Body.Close()
+	defer res.Body.Close()
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
