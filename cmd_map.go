@@ -1,10 +1,21 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 )
+
+type LocationAreas struct {
+	Count    int    `json:"count"`
+	Next     string `json:"next"`
+	Previous any    `json:"previous"`
+	Results  []struct {
+		Name string `json:"name"`
+		URL  string `json:"url"`
+	} `json:"results"`
+}
 
 func commandMap() error {
 	// Get location areas
@@ -22,6 +33,13 @@ func commandMap() error {
 		return err
 	}
 
-	fmt.Printf("%s\n", body)
+	locations := LocationAreas{}
+	// parse(unmarshal?) the json
+	json.Unmarshal(body, &locations)
+
+	for i := range locations.Results {
+		fmt.Println(locations.Results[i].Name)
+	}
+
 	return nil
 }
