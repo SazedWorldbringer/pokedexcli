@@ -11,15 +11,14 @@ type Cache struct {
 	entries map[string]cacheEntry
 }
 
-func NewCache(interval time.Duration) *Cache {
-	c := &Cache{
+func NewCache(interval time.Duration) Cache {
+	c := Cache{
 		entries: make(map[string]cacheEntry),
 	}
 	return c
 }
 
 func (c *Cache) Add(key string, val []byte) {
-	val = append(val, []byte("a")...)
 	c.entries[key] = cacheEntry{
 		createdAt: time.Now(),
 		val:       val,
