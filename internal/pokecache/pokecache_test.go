@@ -38,3 +38,29 @@ func TestAddGet(t *testing.T) {
 		})
 	}
 }
+
+func TestReapLoop(t *testing.T) {
+	const baseTime = 5 * time.Millisecond
+	const waitTime = baseTime + 5*time.Millisecond
+
+	testCase := struct {
+		key string
+		val []byte
+	}{
+		key: "https://example.com",
+		val: []byte("testdata"),
+	}
+
+	cache := NewCache(baseTime)
+	cache.Add(testCase.key, testCase.val)
+
+	if _, ok := cache.Get(testCase.key); !ok {
+		t.Errorf("expected to find key")
+	}
+
+	time.Sleep(waitTime)
+
+	if _, ok := cache.Get(testCase.key); ok {
+		t.Errorf("expected key to be reaped")
+	}
+}
