@@ -56,11 +56,13 @@ func TestReapLoop(t *testing.T) {
 
 	if _, ok := cache.Get(testCase.key); !ok {
 		t.Errorf("expected to find key")
+		return
 	}
 
 	time.Sleep(waitTime)
 
 	if _, ok := cache.Get(testCase.key); ok {
 		t.Errorf("expected key to be reaped")
+		return
 	}
 }
