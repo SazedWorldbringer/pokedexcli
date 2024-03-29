@@ -18,8 +18,10 @@ usage: explore <location_name>
 		return err
 	}
 
+	fmt.Printf("Exploring location %s...\n", areaName)
+	fmt.Println("Found Pokemon:")
 	for _, encounter := range locationRes.PokemonEncounters {
-		fmt.Println(encounter.Pokemon.Name)
+		fmt.Printf(" - %s\n", encounter.Pokemon.Name)
 	}
 	return nil
 }
