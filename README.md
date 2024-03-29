@@ -15,6 +15,7 @@ Usage:
 help: Display help message
 map: Explore the world of Pokemon
 mapb: Display the previous locations
+explore: Explore a location
 exit: Exit the Pokedex
 ```
 
