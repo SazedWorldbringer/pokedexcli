@@ -16,6 +16,7 @@ help: Display help message
 map: Explore the world of Pokemon
 mapb: Display the previous locations
 explore: Explore a location
+catch: Catch a Pokemon in your pokeball
 exit: Exit the Pokedex
 ```
 
