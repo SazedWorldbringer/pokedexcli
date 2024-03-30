@@ -17,6 +17,7 @@ map: Explore the world of Pokemon
 mapb: Display the previous locations
 explore: Explore a location
 catch: Catch a Pokemon in your pokeball
+inspect: See details of a Pokemon in your pokedex
 exit: Exit the Pokedex
 ```
 
